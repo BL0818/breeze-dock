@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== 基础工具类 ===== */
+@layer components {
+  .linear-card {
+    @apply bg-white dark:bg-[#141414] rounded-md border border-gray-200 dark:border-gray-800;
+  }
+
+  .linear-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-colors duration-150 cursor-pointer select-none;
+  }
+
+  .linear-btn-primary {
+    @apply linear-btn bg-blue-500 text-white hover:bg-blue-600;
+  }
+
+  .linear-btn-secondary {
+    @apply linear-btn bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700;
+  }
+
+  .linear-btn-ghost {
+    @apply linear-btn bg-transparent text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-200;
+  }
+
+  .linear-transition {
+    @apply transition-all duration-150 ease-out;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+}
+
+/* ===== 拖拽区域 ===== */
+.drag-region {
+  -webkit-app-region: drag;
+}
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* ===== CSS 自定义属性 ===== */
+:root {
+  --color-primary: #165DFF;
+  --color-primary-hover: #306AFF;
+  --color-primary-subtle: rgba(22, 93, 255, 0.1);
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+  --color-danger: #EF4444;
+  --transition: 150ms ease-out;
+
+  /* 字体变量 */
+  --font-sans: 'Alibaba PuHuiTi', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', Consolas, monospace;
+}
+
+/* ===== Linear 风格滚动条 - 极细 ===== */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* ===== 暗色模式 ===== */
+html.dark {
+  color-scheme: dark;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== 全局基础 ===== */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ===== 文字渲染优化 - 全平台清晰 ===== */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+  letter-spacing: 0.01em;
+}
+
+/* ===== 标题层级 - 舒适的视觉节奏 ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+h1 { font-size: 24px; font-weight: 700; }
+h2 { font-size: 20px; }
+h3 { font-size: 18px; }
+h4 { font-size: 16px; }
+h5 { font-size: 14px; }
+h6 { font-size: 13px; font-weight: 500; }
+
+/* 正文文本 - 舒适阅读 */
+p {
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+/* 小字文本 - 标签/辅助文字 */
+small, .text-small {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+/* ===== Linear 风格选中 ===== */
+::selection {
+  background: color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+html.dark ::selection {
+  background: color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+/* ===== 输入框聚焦 ===== */
+input:focus, textarea:focus {
+  outline: none;
+}
+
+/* 输入框文字 - 舒适间距 */
+input, textarea {
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+/* ===== 禁用用户选择 ===== */
+button, [role="button"] {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ===== 平滑滚动 ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== 焦点可见性 ===== */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ===== 范围输入滑块 ===== */
+input[type="range"] {
+  accent-color: var(--color-primary);
+}
+
+/* ===== 代码字体 ===== */
+code, pre, kbd {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+/* ===== 侧边栏主题变量 ===== */
+:root {
+  --sidebar: #FAFAFA;
+  --sidebar-foreground: #374151;
+  --sidebar-primary: var(--color-primary);
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F3F4F6;
+  --sidebar-accent-foreground: #111827;
+  --sidebar-border: rgba(0, 0, 0, 0.06);
+  --sidebar-ring: var(--color-primary);
+}
+
+.dark {
+  --sidebar: #141414;
+  --sidebar-foreground: #9CA3AF;
+  --sidebar-primary: var(--color-primary);
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1A1A1A;
+  --sidebar-accent-foreground: #F3F4F6;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --sidebar-ring: var(--color-primary);
+}
